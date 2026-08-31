@@ -1,1 +1,223 @@
 @import "tailwindcss";
+
+@theme {
+  --color-deep: #081014;
+  --color-ink: #0c181f;
+  --color-panel: #12232c;
+  --color-raise: #17303a;
+  --color-line: #22414b;
+  --color-mist: #7e9ea3;
+  --color-fog: #dceae9;
+  --color-mint: #34e0bc;
+  --color-mintdim: #1e8f7a;
+  --color-amber: #f5ae4e;
+  --color-ember: #e4574f;
+
+  --font-display: "Chakra Petch", "Anuphan", sans-serif;
+  --font-sans: "Anuphan", "Chakra Petch", sans-serif;
+  --font-mono: "JetBrains Mono", "Anuphan", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+  body {
+    @apply bg-deep text-fog font-sans antialiased;
+    background-image:
+      radial-gradient(1100px 520px at 85% -10%, rgba(52, 224, 188, 0.07), transparent 60%),
+      radial-gradient(900px 480px at -10% 30%, rgba(245, 174, 78, 0.05), transparent 60%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    background: var(--color-mint);
+    color: var(--color-deep);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-deep);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-mintdim);
+  }
+}
+
+@layer utilities {
+  /* ── ambient background layers ─────────────────────────── */
+  .bg-blueprint {
+    background-image:
+      linear-gradient(rgba(52, 224, 188, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(52, 224, 188, 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 78%);
+  }
+  .noise {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── scroll reveal ─────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition-delay: var(--rv-delay, 0ms);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── marquee ───────────────────────────────────────────── */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee-track.is-reverse {
+    animation-direction: reverse;
+    animation-duration: 46s;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* ── keyframe library ──────────────────────────────────── */
+  .cursor-blink {
+    animation: blink 1.05s steps(1) infinite;
+  }
+  .floaty {
+    animation: floaty 6.5s ease-in-out infinite;
+  }
+  .floaty-slow {
+    animation: floaty 9s ease-in-out infinite;
+  }
+  .card-in {
+    animation: fade-up 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .modal-in {
+    animation: pop-in 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .backdrop-in {
+    animation: fade-in 0.3s ease both;
+  }
+  .pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  .kenburns {
+    animation: kenburns 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-11px);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(52, 224, 188, 0.5);
+    }
+    55% {
+      box-shadow: 0 0 0 7px rgba(52, 224, 188, 0);
+    }
+  }
+  @keyframes kenburns {
+    from {
+      transform: scale(1) translateY(0);
+    }
+    to {
+      transform: scale(1.08) translateY(-2%);
+    }
+  }
+
+  /* ── misc ──────────────────────────────────────────────── */
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(126, 158, 163, 0.35);
+    color: transparent;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line) transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track,
+  .floaty,
+  .floaty-slow,
+  .cursor-blink,
+  .pulse-dot,
+  .kenburns {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .card-in,
+  .modal-in,
+  .backdrop-in {
+    animation-duration: 0.01ms !important;
+  }
+}
