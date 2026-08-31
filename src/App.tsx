@@ -9,6 +9,7 @@ import {
   TechMarquee,
   ContactForm,
 } from "./components/portfolio";
+import { SitemapSection } from "./components/sitemap";
 import {
   PROJECTS,
   SERVICES,
@@ -477,6 +478,7 @@ export default function App() {
         <Tech />
         <Process />
         <Contact />
+        <SitemapSection />
       </main>
       <Footer />
     </div>

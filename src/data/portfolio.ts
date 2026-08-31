@@ -375,3 +375,74 @@ export const NAV_LINKS = [
   { href: "#process", label: "กระบวนการ" },
   { href: "#contact", label: "ติดต่อ" },
 ];
+
+/* ── SEO: คีย์เวิร์ดที่ครอบคลุมธุรกิจ (ใช้ในหน้า sitemap) ──
+   แก้ไข/เพิ่มคำค้นหาใหม่ได้จากที่นี่ที่เดียว                */
+
+export type KeywordGroup = {
+  group: string;
+  href: string;
+  items: string[];
+};
+
+export const SEO_KEYWORDS: KeywordGroup[] = [
+  {
+    group: "เว็บไซต์",
+    href: "#services",
+    items: [
+      "รับทำเว็บไซต์บริษัท",
+      "รับทำเว็บองค์กร",
+      "รับทำ Landing Page",
+      "เว็บโหลดเร็ว ติด SEO",
+      "ปรับโฉมเว็บเก่า",
+    ],
+  },
+  {
+    group: "ระบบธุรกิจเฉพาะทาง",
+    href: "#portfolio",
+    items: [
+      "รับทำระบบ POS",
+      "ระบบร้านทอง",
+      "ระบบรับจำนำ",
+      "ระบบสินเชื่อออนไลน์",
+      "ระบบปล่อยกู้ค้ำประกัน",
+      "ระบบ back-office",
+      "ระบบอนุมัติเอกสาร",
+      "ระบบแสดงผลสอบ / สถานศึกษา",
+    ],
+  },
+  {
+    group: "โมบายแอป",
+    href: "#portfolio",
+    items: [
+      "รับทำแอปมือถือ",
+      "แอป iOS / Android",
+      "แอป Flutter",
+      "แอปทีมภาคสนาม",
+      "แอปแจ้งเตือนลูกค้า",
+    ],
+  },
+  {
+    group: "เทคโนโลยี & บริการเสริม",
+    href: "#tech",
+    items: [
+      "Nuxt 3 Developer",
+      "Supabase Development",
+      "Node.js API",
+      "ออกแบบ UX/UI",
+      "ที่ปรึกษาวางระบบ",
+      "ดูแลระบบหลังส่งมอบ",
+    ],
+  },
+];
+
+/* ── SEO: เช็กลิสต์เชิงเทคนิค (แสดงในหน้า sitemap) ──────── */
+
+export const SEO_CHECKLIST = [
+  { file: "index.html", item: "Title + Meta description ภาษาไทย ครอบคลุมคีย์เวิร์ดหลัก" },
+  { file: "index.html", item: "Meta keywords + robots index,follow + canonical" },
+  { file: "index.html", item: "Open Graph + Twitter Card พร้อมภาพ banner 1200×630" },
+  { file: "index.html", item: "JSON-LD schema (ProfessionalService + knowsAbout)" },
+  { file: "/robots.txt", item: "อนุญาต crawler ทุกตัว และชี้ไปที่ sitemap" },
+  { file: "/sitemap.xml", item: "รายการ URL ทุก section พร้อม priority / changefreq" },
+];

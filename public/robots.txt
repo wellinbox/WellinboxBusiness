@@ -1,0 +1,6 @@
+# Wellinbox — https://wellinbox.com
+User-agent: *
+Allow: /
+
+# 사이트맵
+Sitemap: https://wellinbox.com/sitemap.xml
