@@ -177,6 +177,24 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-mist mt-6 mb-4">SEO</p>
+            <ul className="space-y-2.5 font-mono text-[13px]">
+              <li>
+                <a href="#sitemap" className="text-fog/80 hover:text-mint transition-colors">
+                  แผนผังเว็บไซต์
+                </a>
+              </li>
+              <li>
+                <a href="/sitemap.xml" target="_blank" rel="noreferrer" className="text-fog/80 hover:text-mint transition-colors">
+                  sitemap.xml
+                </a>
+              </li>
+              <li>
+                <a href="/robots.txt" target="_blank" rel="noreferrer" className="text-fog/80 hover:text-mint transition-colors">
+                  robots.txt
+                </a>
+              </li>
+            </ul>
           </div>
           <div className="md:col-span-4">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-mist mb-4">ติดต่อตรง</p>
